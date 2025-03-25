@@ -1,0 +1,100 @@
+*::before
+*::after{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+html{
+    font-optical-sizing: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+.main_div{
+    width:100vw;
+    height:100vh;
+    background: #89253e;
+
+    display: grid;
+    place-items: center;
+
+}
+.music_container{
+    width: 25rem;
+    height: 35rem;
+    background: #3a6186; 
+    background: -webkit-linear-gradient(to right, #89253e, #3a6186);  
+    background: linear-gradient(to right, #89253e, #3a6186);
+    border-radius: 2rem;
+    box-shadow: 0 1.2rem 3rem 0.5rem black;
+    text-align: center;
+}
+.music_container #tittle{
+    text-transform: uppercase;
+    letter-spacing: 0.2 rem;
+    word-spacing: 0.5rem 0;
+    color: black;
+    margin: 2rem 0.5rem 0;
+    font-weight: 500;
+    text-shadow: 0 0.3rem 0.5rem black;
+}
+
+.music_controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position:relative;
+    bottom: 20px;
+    width: 90%;
+    /* margin-top: 6rem; */
+    margin: 5rem auto 0 auto; /* Auto centers it horizontally */
+    padding: 10px;
+
+
+}
+.music_controls i {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.music_controls .main_button{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: black;
+    color: aliceblue;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.music_controls .fas:hover{
+    color: #cac1c1;;
+}
+img{
+    border-radius: 50%;
+    object-fit: cover;
+}
+.img_container img {
+    transform: rotate(0deg); /* Make sure it's not flipped */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.anime{
+    animation: rotatePlayer 4s linear infinite;
+}
+@keyframes rotatePlayer{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+
+

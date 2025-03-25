@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main_div">
+        <div class="music_container">
+            <h2 id="title">JHOL</h2>
+            <h3 id="artist">Mannu,Annural Khalid</h3>
+            <div class="img_container">
+                <div class="flicker-effect"></div> 
+          <img   class="anime"src="IMAGES/JHOL.jpg">
+            </div>
+            <div>
+                <audio src="./Jhol (PenduJatt.Com.Se).mp3 "></audio>
+            </div>
+            <div class="music_controls">
+                <i class="fas fa-backward" id="prev" title="Previous"></i>
+                <i class="fas fa-play main_button" id="play" title="Play"></i>
+                <i class="fas fa-forward" id="next" title="next"></i>
+             </div>
+        </div>
+    </div>
+    <script>
+        const img=document.querySelector("img");
+        const  music=document.querySelector("audio");
+        const play=document.getElementById("play");
+        const Artist=document.getElementById("artist");
+        const title=document.getElementById("title");
+        const previous=document.getElementById("prev");
+        const next=document.getElementById("next");
+
+    const songs = [
+    { Name: "JHOL", title: "JHOL", Artist: "Mannu, Anural Khalid" },
+    { Name: "PARO", title: "PAARO", Artist: "Aditya Rikhari" },
+    { Name: "ZHUMNAVA", title: "HUMNAVA", Artist: "Mithoon, Papon" }
+];
+
+        let  isPlaying=false;
+        //for play function
+        const imgContainer = document.querySelector(".img_container"); 
+        const playMusic=() =>{
+         isPlaying=true;
+        music.play();
+        play.classList.replace("fa-play","fa-pause");
+         img.classList.add("anime");
+         imgContainer.classList.add("flicker-effect"); // Add flicker effect
+        };
+        //for pause function
+        const pauseMusic=() =>{
+         isPlaying=false;
+        music.pause();
+        play.classList.replace("fa-pause","fa-play");
+         img.classList.remove("anime");
+         imgContainer.classList.remove("flicker-effect"); // Remove flicker effect
+        };
+        play.addEventListener('click',()=>{
+         isPlaying? pauseMusic():playMusic();
+        });
+        //changing music data
+        const loadSong=(songs)=>{
+            title.textContent=songs.title;
+            Artist.textContent=songs.Artist;
+            music.src="MUSIC/"+songs.Name+".mp3";
+            img.src="MUSIC/IMAGES/"+songs.Name+".jpg";
+            };
+            let  songIndex=0;
+            const nextSong=()=>{
+                songIndex=(songIndex+1)% songs.length;
+            loadSong(songs[songIndex]);
+            playMusic();
+            };
+            const prevSong=()=>{
+                songIndex=(songIndex-1 + songs.length)%songs.length;
+            loadSong(songs[songIndex]);
+            playMusic();
+            };
+            next.addEventListener("click",nextSong);
+            prev.addEventListener("click",prevSong);
+
+            next.addEventListener("click", nextSong);
+prev.addEventListener("click", prevSong);
+
+// Load the first song by default when the page loads
+window.addEventListener("load", () => {
+    loadSong(songs[0]);
+});
+
+  
+
+        </script>
+    
+</body>
+</html>
